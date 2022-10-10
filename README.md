@@ -1,3 +1,5 @@
+ACTUAL README TO START ON LINE 75 - clean up during refactor
+
 # FlashCards Starter Kit
 
 ## Fork This Repo
@@ -69,3 +71,5 @@ npm test
 The test results will output to the terminal.
 
 
+
+README
