@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Turn = require('../src/Turn');
-const Card = require('../src/Card')
+const Card = require('../src/Card');
 
 describe('Turn', function() {
   let card, turn;
@@ -12,6 +12,7 @@ describe('Turn', function() {
     turn1 = new Turn('object', card);
     turn2 = new Turn('taters', card)
   })
+  
   it('should take in arguments for a user guess and the current Card', function() {
     expect(turn1.guess).to.equal('object');
   });
