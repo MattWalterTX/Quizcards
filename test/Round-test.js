@@ -27,4 +27,9 @@ describe('Round', function() {
     expect(round.returnCurrentCard()).to.equal(deck.contents[2]);
   })
 
+  it('should create a new turn instance when a guess is made', function() {
+    round.takeTurn('potater')
+    console.log
+    expect(round.takeTurn('potater')).to.be.an.instanceOf(Turn);
+  })
 })
