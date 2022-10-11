@@ -32,4 +32,11 @@ describe('Round', function() {
     console.log
     expect(round.takeTurn('potater')).to.be.an.instanceOf(Turn);
   })
+
+  it('should increase the turn counter each takeTurn', function() {
+    round.takeTurn('potater')
+    expect(round.turnCount).to.equal(1);
+       round.takeTurn('potater')
+    expect(round.turnCount).to.equal(2);
+  })
 })
