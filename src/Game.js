@@ -17,6 +17,7 @@ class Game {
     const newRound = new Round(deck);
     this.roundCount ++;
     this.printMessage(deck);
+    this.printQuestion(newRound);
   }
 
   printMessage(deck, round) {
