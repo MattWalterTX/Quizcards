@@ -20,11 +20,10 @@ class Round {
     if(turn.evaluateGuess() !== true) {
       this.incorrectGuesses.push(guess)
     };
-    // console.log('updated', this.incorrectGuesses)
+    turn.giveFeedback()
+    // console.log(turn.giveFeedback())
     this.turnCount ++;
     this.returnCurrentCard();
-    return turn
-
   }
 }
 

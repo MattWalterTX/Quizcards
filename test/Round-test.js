@@ -27,12 +27,6 @@ describe('Round', function() {
     expect(round.returnCurrentCard()).to.equal(deck.contents[2]);
   })
 
-  it('should create a new turn instance when a turn is taken', function() {
-    round.takeTurn('potater')
-    console.log
-    expect(round.takeTurn('potater')).to.be.an.instanceOf(Turn);
-  })
-
   it('should increase the turn counter each turn taken', function() {
     expect(round.turnCount).to.equal(0);
     round.takeTurn('potater');
@@ -55,6 +49,14 @@ describe('Round', function() {
     expect(round.incorrectGuesses).to.deep.equal(['potater'])
     round.takeTurn('mutator method')
     expect(round.incorrectGuesses).to.deep.equal(['potater'])
+  })
+
+  it('should return the appropriate feedback based on the guess', function() {
+    round.takeTurn('object');
+    // console.log(round.takeTurn('object'))
+    expect(turn1.giveFeedback()).to.equal('Correct!')
+    round.takeTurn('potater');
+    expect(turn2.giveFeedback()).to.equal('Incorrect!')
   })
 
 })
