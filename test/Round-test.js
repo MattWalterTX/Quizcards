@@ -75,5 +75,19 @@ describe('Round', function() {
     expect(round2.calculatePercentCorrect()).to.equal(0)
   })
 
-  
+  it('should be able to return a message at the end of the round with percentage of correct answers', function() {
+    turn3 = new Turn('potaters', card3);
+    round.takeTurn('object');
+    round.takeTurn('function');
+    round.takeTurn('mutator method');
+
+    expect(round.endRound()).to.equal('** Round over! ** You answered 66% of the questions correctly!')
+
+    const round2 = new Round (deck)
+    round2.takeTurn('taters');
+    round2.takeTurn('beef');
+    round2.takeTurn('methods');
+
+    expect(round2.endRound()).to.equal('** Round over! ** You answered 0% of the questions correctly!')
+  })
 })
