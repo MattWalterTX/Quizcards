@@ -47,4 +47,14 @@ describe('Round', function() {
     round.takeTurn('potater');
     expect(round.currentCard).to.equal(card3);
   })
+
+  it('should evaluate the guess and store wrong answers in an array', function() {
+    round.takeTurn('object');
+    expect(round.incorrectGuesses).to.deep.equal([])
+    round.takeTurn('potater');
+    expect(round.incorrectGuesses).to.deep.equal(['potater'])
+    round.takeTurn('mutator method')
+    expect(round.incorrectGuesses).to.deep.equal(['potater'])
+  })
+
 })
