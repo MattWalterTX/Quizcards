@@ -6,7 +6,7 @@ class Round {
   constructor(userDeck) {
     this.gameDeck = userDeck.contents;
     this.turnCount = 0;
-    this.currentCard = {};
+    this.currentCard = this.gameDeck[0];
   }
   returnCurrentCard() {
     this.currentCard = this.gameDeck[this.turnCount];
@@ -14,10 +14,9 @@ class Round {
   }
 
   takeTurn(guess) {
-    this.turnCount ++;
-    // console.log(guess, this.gameDeck[this.turnCount])
     const turn = new Turn(guess, this.gameDeck[this.turnCount]);
-    // console.log(this.turnCount)
+    this.turnCount ++;
+    this.returnCurrentCard();
     return turn
 
   }

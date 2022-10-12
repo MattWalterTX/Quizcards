@@ -27,16 +27,24 @@ describe('Round', function() {
     expect(round.returnCurrentCard()).to.equal(deck.contents[2]);
   })
 
-  it('should create a new turn instance when a guess is made', function() {
+  it('should create a new turn instance when a turn is taken', function() {
     round.takeTurn('potater')
     console.log
     expect(round.takeTurn('potater')).to.be.an.instanceOf(Turn);
   })
 
-  it('should increase the turn counter each takeTurn', function() {
-    round.takeTurn('potater')
+  it('should increase the turn counter each turn taken', function() {
+    expect(round.turnCount).to.equal(0);
+    round.takeTurn('potater');
     expect(round.turnCount).to.equal(1);
-       round.takeTurn('potater')
+    round.takeTurn('potater');
     expect(round.turnCount).to.equal(2);
+  })
+
+  it('should change the current card to the next card when a turn is taken', function() {
+    round.takeTurn('potater');
+    expect(round.currentCard).to.equal(card2);
+    round.takeTurn('potater');
+    expect(round.currentCard).to.equal(card3);
   })
 })
