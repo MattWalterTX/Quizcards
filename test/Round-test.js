@@ -59,4 +59,21 @@ describe('Round', function() {
     expect(turn2.giveFeedback()).to.equal('Incorrect!')
   })
 
+  it('should calculate and return the amount percentage of correct guesses', function() {
+    turn3 = new Turn('potaters', card3);
+    round.takeTurn('object');
+    round.takeTurn('function');
+    round.takeTurn('mutator method');
+
+    expect(round.calculatePercentCorrect()).to.equal(66)
+
+    const round2 = new Round (deck)
+    round2.takeTurn('taters');
+    round2.takeTurn('beef');
+    round2.takeTurn('methods');
+
+    expect(round2.calculatePercentCorrect()).to.equal(0)
+  })
+
+  
 })

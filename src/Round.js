@@ -25,6 +25,10 @@ class Round {
     this.turnCount ++;
     this.returnCurrentCard();
   }
+  calculatePercentCorrect() {
+    console.log((1 - (this.incorrectGuesses.length / this.gameDeck.length)) * 100)
+    return Math.floor((1 - (this.incorrectGuesses.length / this.gameDeck.length)) * 100)
+  }
 }
 
 module.exports = Round
