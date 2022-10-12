@@ -16,11 +16,10 @@ class Game {
     this.currentDeck = deck.contents;
     const newRound = new Round(deck);
     this.roundCount ++;
-
+    this.printMessage(deck);
   }
 
   printMessage(deck, round) {
-    console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards. -----------------------------------------------------------------------`)
     return `Welcome to FlashCards! You are playing with ${deck.countCards()} cards. -----------------------------------------------------------------------`
   }
 
