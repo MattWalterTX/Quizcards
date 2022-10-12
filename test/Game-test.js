@@ -23,18 +23,18 @@ describe('Game', function() {
 
   })
 
-  it('should keep track of the current round', function() {
+  it.skip('should keep track of the current round', function() {
     
     expect(game.roundCount).to.equal(0);
   })
 
-  it('should create a deck of the cards with provided data', function() {
+  it.skip('should create a deck of the cards with provided data', function() {
     game.start(deck);
 
     expect(game.currentDeck).to.deep.equal([card1, card2, card3]);
   })
 
-  it('should create a new round using the deck', function() {
+  it.skip('should create a new round using the deck', function() {
 
     expect(game.roundCount).to.equal(0);
     game.start(deck);
@@ -42,7 +42,7 @@ describe('Game', function() {
     expect(game.roundCount).to.equal(1);
   })
 
-  it('should invoke and display our printMessage in the CLI', function() {
+  it.skip('should invoke and display our printMessage in the CLI', function() {
     game.start(deck);
     
     expect(game.printMessage(deck, round1)).to.equal(`Welcome to FlashCards! You are playing with 3 cards. -----------------------------------------------------------------------`)
