@@ -17,13 +17,13 @@ class Game {
     data.forEach((dat) => {
       const card = new Card(dat.id, dat.question, dat.answers, dat.correctAnswer);
       cards.push(card);
-    })
-    const newDeck = new Deck(cards)
-    // console.log(newDeck)
+    });
+    const newDeck = new Deck(cards);
     this.currentDeck = newDeck.contents;
+    // console.log(newDeck);
     const newRound = new Round(newDeck);
     this.roundCount ++;
-    console.log(this.printMessage(newDeck))
+    // console.log(this.printMessage(newDeck));
     this.printMessage(newDeck);
     this.printQuestion(newRound);
   }

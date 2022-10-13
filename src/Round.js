@@ -9,6 +9,7 @@ class Round {
     this.currentCard = this.gameDeck[0];
     this.incorrectGuesses = [];
   }
+
   returnCurrentCard() {
     this.currentCard = this.gameDeck[this.turnCount];
     return this.currentCard
@@ -16,19 +17,22 @@ class Round {
 
   takeTurn(guess) {
     const turn = new Turn(guess, this.gameDeck[this.turnCount]);
+    // console.log('turn: ', turn)
     if(turn.evaluateGuess() !== true) {
       this.incorrectGuesses.push(guess)
     };
-    turn.giveFeedback()
+    turn.giveFeedback();
     if(this.currentRound = this.gameDeck.length) {
       this.endRound()
     };
     this.turnCount ++;
     this.returnCurrentCard();
   }
+
   calculatePercentCorrect() {
     return Math.floor((1 - (this.incorrectGuesses.length / this.gameDeck.length)) * 100)
   }
+
   endRound() {
     return `** Round over! ** You answered ${[this.calculatePercentCorrect()]}% of the questions correctly!`
   }
