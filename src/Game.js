@@ -14,10 +14,11 @@ class Game {
   }
   start(data) {
     const cards = [];
-    data.forEach((dat) => {
+    data.map((dat) => {
       const card = new Card(dat.id, dat.question, dat.answers, dat.correctAnswer);
       cards.push(card);
     });
+    // console.log(cards)
     const newDeck = new Deck(cards);
     this.currentDeck = newDeck.contents;
     // console.log(newDeck);
@@ -25,11 +26,12 @@ class Game {
     this.roundCount ++;
     // console.log(this.printMessage(newDeck));
     this.printMessage(newDeck);
+    // console.log(newRound);
     this.printQuestion(newRound);
   }
 
   printMessage(deck, round) {
-    return `Welcome to FlashCards! You are playing with ${deck.countCards()} cards. -----------------------------------------------------------------------`
+    console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards. -----------------------------------------------------------------------`)
   }
 
   printQuestion(round) {
