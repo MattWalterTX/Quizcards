@@ -12,11 +12,19 @@ class Game {
     this.roundCount = 0;
     this.currentDeck = [];
   }
-  start(deck) {
-    this.currentDeck = deck.contents;
-    const newRound = new Round(deck);
+  start(data) {
+    const cards = [];
+    data.forEach((dat) => {
+      const card = new Card(dat.id, dat.question, dat.answers, dat.correctAnswer);
+      cards.push(card);
+    })
+    const newDeck = new Deck(cards)
+    // console.log(newDeck)
+    this.currentDeck = newDeck.contents;
+    const newRound = new Round(newDeck);
     this.roundCount ++;
-    this.printMessage(deck);
+    console.log(this.printMessage(newDeck))
+    this.printMessage(newDeck);
     this.printQuestion(newRound);
   }
 

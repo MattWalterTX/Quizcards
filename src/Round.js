@@ -20,6 +20,9 @@ class Round {
       this.incorrectGuesses.push(guess)
     };
     turn.giveFeedback()
+    if(this.currentRound = this.gameDeck.length) {
+      this.endRound()
+    };
     this.turnCount ++;
     this.returnCurrentCard();
   }
