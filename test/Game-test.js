@@ -1,6 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const data = require('../src/data');
+const prototypeQuestions = data.prototypeData;
 const Turn = require('../src/Turn');
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
@@ -23,13 +25,13 @@ describe('Game', function() {
 
   })
 
-  it.skip('should keep track of the current round', function() {
+  it('should keep track of the current round', function() {
     
     expect(game.roundCount).to.equal(0);
   })
 
   it.skip('should create a deck of the cards with provided data', function() {
-    game.start(deck);
+    game.start(prototypeQuestions);
 
     expect(game.currentDeck).to.deep.equal([card1, card2, card3]);
   })
@@ -37,13 +39,13 @@ describe('Game', function() {
   it.skip('should create a new round using the deck', function() {
 
     expect(game.roundCount).to.equal(0);
-    game.start(deck);
+    game.start(prototypeQuestions);
 
     expect(game.roundCount).to.equal(1);
   })
 
   it.skip('should invoke and display our printMessage in the CLI', function() {
-    game.start(deck);
+    game.start(prototypeQuestions);
     
     expect(game.printMessage(deck, round1)).to.equal(`Welcome to FlashCards! You are playing with 3 cards. -----------------------------------------------------------------------`)
   })

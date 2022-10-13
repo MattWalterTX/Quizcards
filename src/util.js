@@ -22,6 +22,7 @@ const getRound = (round) => {
 }
 
 const confirmUpdate = (id, round) => {
+    console.log('LABEL: ', id);
   const feedback = round.takeTurn(id);
   return {
     name: 'feedback',
@@ -30,9 +31,9 @@ const confirmUpdate = (id, round) => {
 }
 
 async function main(round) {
-
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
+  console.log(getAnswer);
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
     if(!round.returnCurrentCard()) {
