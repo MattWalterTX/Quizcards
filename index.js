@@ -13,7 +13,7 @@ const Deck = require('./src/Deck');
 const Round = require('./src/Round');
 const Game = require('./src/Game');
 
-const game = new Game();
+let game = new Game();
 
 function startGame(data) {
   game.start(data);

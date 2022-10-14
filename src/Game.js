@@ -13,16 +13,16 @@ class Game {
     this.currentDeck = [];
   }
   start(data) {
-    const cards = [];
+    let cards = [];
     data.map((dat) => {
       const card = new Card(dat.id, dat.question, dat.answers, dat.correctAnswer);
       cards.push(card);
     });
     // console.log(cards)
-    const newDeck = new Deck(cards);
+    let newDeck = new Deck(cards);
     this.currentDeck = newDeck.contents;
     // console.log(newDeck);
-    const newRound = new Round(newDeck);
+    let newRound = new Round(newDeck);
     this.roundCount ++;
     // console.log(this.printMessage(newDeck));
     this.printMessage(newDeck);
