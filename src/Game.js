@@ -12,21 +12,17 @@ class Game {
     this.roundCount = 0;
     this.currentDeck = [];
   }
-  start(data) {
-    let cards = [];
-    data.map((dat) => {
+
+  start() {
+    const cards = prototypeQuestions.map((dat) => {
       const card = new Card(dat.id, dat.question, dat.answers, dat.correctAnswer);
-      cards.push(card);
+      return card
     });
-    // console.log(cards)
-    let newDeck = new Deck(cards);
+    const newDeck = new Deck(cards);
     this.currentDeck = newDeck.contents;
-    // console.log(newDeck);
-    let newRound = new Round(newDeck);
+    const newRound = new Round(newDeck);
     this.roundCount ++;
-    // console.log(this.printMessage(newDeck));
     this.printMessage(newDeck);
-    // console.log(newRound);
     this.printQuestion(newRound);
   }
 

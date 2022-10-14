@@ -14,23 +14,16 @@ class Round {
   }
 
   returnCurrentCard() {
-    this.currentCard = this.gameDeck[this.turnCount];
     return this.currentCard
   }
 
   takeTurn(guess) {
-    const turn = new Turn(guess, this.gameDeck[this.turnCount]);
-    // console.log('turn: ', turn)
+    const turn = new Turn(guess, this.currentCard);
     if(turn.evaluateGuess() !== true) {
-      this.incorrectGuesses.push(guess);
+      this.incorrectGuesses.push(this.currentCard.id);
     };
-    // console.log('curr round: ', this.turnCount)
-    // console.log(this.gameDeck.length)
     this.turnCount ++;
-    // if(this.turnCount === this.gameDeck.length) {
-    //   return this.endRound()
-    // };
-    this.returnCurrentCard();
+    this.currentCard = this.gameDeck[this.turnCount];
     return turn.giveFeedback();
   }
 
@@ -39,14 +32,13 @@ class Round {
   }
 
   endRound() {
-    if(this.calculatePercentCorrect() >= 90){
-    return `** Round over! ** You answered ${[this.calculatePercentCorrect()]}% of the questions correctly!`
-    } else {
+    const Game = require('./Game');
+    if(this.calculatePercentCorrect() <= 90) {
       console.log(`** Round over! ** Looks like you could use some more practice! You only answered ${[this.calculatePercentCorrect()]}% of the questions correctly. Let\'s try that again!`);
-      this.turnCount = 0;
-      this.currentCard = this.gameDeck[0];
-      this.incorrectGuesses = [];
-      console.log()
+      const game = new Game();
+      game.start()
+    } else {
+    console.log(`** Round over! ** You answered ${[this.calculatePercentCorrect()]}% of the questions correctly!`)
     }
   }
 }
