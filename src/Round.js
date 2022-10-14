@@ -1,6 +1,9 @@
 // const { createPromptModule } = require("inquirer");
+const data = require('./data');
+const prototypeQuestions = data.prototypeData;
 const Deck = require("./Deck");
 const Turn = require('./Turn');
+// const index = require('./index')
 
 class Round {
   constructor(userDeck) {
@@ -11,22 +14,17 @@ class Round {
   }
 
   returnCurrentCard() {
-    this.currentCard = this.gameDeck[this.turnCount];
     return this.currentCard
   }
 
   takeTurn(guess) {
-    const turn = new Turn(guess, this.gameDeck[this.turnCount]);
-    // console.log('turn: ', turn)
+    const turn = new Turn(guess, this.currentCard);
     if(turn.evaluateGuess() !== true) {
-      this.incorrectGuesses.push(guess)
-    };
-    turn.giveFeedback();
-    if(this.currentRound = this.gameDeck.length) {
-      this.endRound()
+      this.incorrectGuesses.push(this.currentCard.id);
     };
     this.turnCount ++;
-    this.returnCurrentCard();
+    this.currentCard = this.gameDeck[this.turnCount];
+    return turn.giveFeedback();
   }
 
   calculatePercentCorrect() {
@@ -34,7 +32,14 @@ class Round {
   }
 
   endRound() {
-    return `** Round over! ** You answered ${[this.calculatePercentCorrect()]}% of the questions correctly!`
+    const Game = require('./Game');
+    if(this.calculatePercentCorrect() <= 90) {
+      console.log(`** Round over! ** Looks like you could use some more practice! You only answered ${[this.calculatePercentCorrect()]}% of the questions correctly. Let\'s try that again!`);
+      const game = new Game();
+      game.start()
+    } else {
+    console.log(`** Round over! ** You answered ${[this.calculatePercentCorrect()]}% of the questions correctly!`)
+    }
   }
 }
 
