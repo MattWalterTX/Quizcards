@@ -5,12 +5,12 @@ const Turn = require('../src/Turn');
 const Card = require('../src/Card');
 
 describe('Turn', function() {
-  let card, turn;
+  let card, turn1, turn2;
 
   beforeEach(() => {
     card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
     turn1 = new Turn('object', card);
-    turn2 = new Turn('taters', card)
+    turn2 = new Turn('taters', card);
   })
   
   it('should take in arguments for a user guess and the current Card', function() {
@@ -34,5 +34,4 @@ describe('Turn', function() {
     expect(turn1.giveFeedback()).to.equal('Correct!');
     expect(turn2.giveFeedback()).to.equal('Incorrect!');
   });
-
 })
